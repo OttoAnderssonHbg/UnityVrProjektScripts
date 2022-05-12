@@ -29,7 +29,7 @@ public class FlyingBall : MonoBehaviour
     IEnumerator RemoveCannonball(GameObject ball)
     {
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(6f);
         Destroy(ball);
 
         Debug.Log("Remove cannonball");

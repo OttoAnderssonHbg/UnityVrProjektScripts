@@ -22,6 +22,12 @@ public class Rotate : MonoBehaviour
     public void RotateU(GameObject barrel)
     {
         Debug.Log("Rotate");
+        barrel.transform.eulerAngles = new Vector3(barrel.transform.eulerAngles.x - 5, barrel.transform.eulerAngles.y, barrel.transform.eulerAngles.z);
         
+    }
+    public void RotateD(GameObject barrel)
+    {
+        Debug.Log("Rotate");
+        barrel.transform.eulerAngles = new Vector3(barrel.transform.eulerAngles.x + 5, barrel.transform.eulerAngles.y, barrel.transform.eulerAngles.z);
     }
 }
