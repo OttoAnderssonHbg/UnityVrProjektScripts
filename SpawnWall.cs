@@ -7,30 +7,38 @@ public class SpawnWall : MonoBehaviour
 
     public GameObject brick;
     public GameObject sB;
+    private GameObject floor;
     //startBrick
     
     // Start is called before the first frame update
     void Start()
     {
-        brick = GameObject.Find("wall");
         float sBx = sB.transform.position.x;
         float sBz = sB.transform.position.z;
         float sBy = sB.transform.position.y;
         Quaternion sBrot = sB.transform.rotation;
 
+        floor = GameObject.Find("Floor");
+
+        Mesh floormesh = floor.GetComponent<MeshFilter>().mesh;
+
+        Mesh mesh = brick.GetComponent<MeshFilter>().mesh;
+        Vector3[] vertices = mesh.vertices;
+        float bx = mesh.bounds.size.x * 10;
+        float by = mesh.bounds.size.y * 5;
 
         RaycastHit hit;
         if (Physics.Raycast(new Ray(transform.position, Vector3.down), out hit, Mathf.Infinity))
         {
-            sBy = hit.transform.position.y;
+            sBy = hit.transform.position.y + floormesh.bounds.size.y /2;
         }
-        
-       
-        for(int i = 0; i < 5; i++ )
+        ///test
+
+        for (int i = 0; i < 5; i++)
         {
-            for(int j = 0; j < 10; j++)
+            for (int j = 0; j < 10; j++)
             {
-                GameObject.Instantiate(brick, new Vector3(sBx + j * 5, sBy + i * 5, sBz), sBrot);
+                GameObject.Instantiate(brick, new Vector3(sBx + bx * j, sBy + by * i + by/2 , sBz), sBrot);
             }
         }
     }

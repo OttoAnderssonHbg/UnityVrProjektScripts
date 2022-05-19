@@ -12,7 +12,7 @@ public class FlyingBall : MonoBehaviour
     {
 
         Debug.Log("Start script");
-        Shoot();
+        
     }
     public void Shoot()
     {
